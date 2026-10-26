@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 14th Mensive Sayang! 💙✨</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lilyBlue: '#E0F2FE',
+                        skySoft: '#BAE6FD',
+                        deepBlue: '#0284C7',
+                        royalBlue: '#0369A1',
+                        softCream: '#F0F9FF',
+                        accentBlue: '#38BDF8'
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 50%, #E2E8F0 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(15deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(186, 230, 253, 0.8);
+            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.15);
+        }
+
+        .tube-container {
+            width: 70px;
+            height: 220px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 4px solid #0284C7;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1), 0 5px 15px rgba(2,132,199,0.3);
+        }
+
+        .tube-liquid {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(180deg, #38BDF8 0%, #0284C7 100%);
+            transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0 0 30px 30px;
+        }
+
+        .tube-liquid::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 0;
+            width: 200%;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            animation: wave 2s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .mini-tube-bg {
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid #0284C7;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .mini-tube-fill {
+            background: linear-gradient(90deg, #38BDF8, #0284C7);
+            transition: width 0.5s ease-out;
+        }
+
+        .shake-animation {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        .pop-in {
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 relative min-h-screen">
+
+    <!-- Background Floating Love & Heart Emojis -->
+    <i class="fa-solid fa-heart text-sky-400 text-3xl floating-element top-8 left-8" style="animation-delay: 0s;"></i>
+    <i class="fa-solid fa-heart text-blue-400 text-4xl floating-element top-1/4 right-10" style="animation-delay: 1.2s;"></i>
+    <i class="fa-solid fa-seedling text-sky-300 text-3xl floating-element top-1/3 left-12" style="animation-delay: 0.5s;"></i>
+    <i class="fa-solid fa-heart text-sky-500 text-2xl floating-element top-2/3 right-16" style="animation-delay: 2.1s;"></i>
+    <i class="fa-solid fa-spa text-blue-300 text-4xl floating-element bottom-12 left-16" style="animation-delay: 1.8s;"></i>
+    <i class="fa-solid fa-heart text-blue-300 text-5xl floating-element bottom-20 right-24" style="animation-delay: 0.8s;"></i>
+    <i class="fa-solid fa-heart text-sky-300 text-3xl floating-element top-12 right-1/3" style="animation-delay: 1.5s;"></i>
+    <i class="fa-solid fa-heart text-blue-400 text-2xl floating-element bottom-10 left-1/3" style="animation-delay: 2.5s;"></i>
+
+    <!-- MAIN CONTAINER CARD -->
+    <div id="mainCard" class="glass-card w-full max-w-lg rounded-3xl p-6 sm:p-8 text-center relative z-10 transition-all duration-500">
+
+        <!-- ================= SLIDE 1: INTRO ================= -->
+        <div id="slideIntro" class="space-y-6 pop-in">
+            <div class="relative inline-block">
+                <span class="text-6xl sm:text-7xl">💙💐</span>
+                <i class="fa-solid fa-heart text-3xl text-deepBlue absolute -top-2 -right-2 animate-bounce"></i>
+            </div>
+            
+            <h1 class="font-fredoka text-2xl sm:text-3xl font-bold text-gray-800 leading-snug">
+                Happy Mensive Sayangg<br><span class="text-deepBlue">Yang Ke-14 Bulan!</span>
+            </h1>
+
+            <p class="text-gray-600 text-sm sm:text-base leading-relaxed px-2">
+                Di mensive aku pengen sesuatu yang beda nihh! Aku mau tes seberapa ingat kamu sama hubungan kita selama ini, apa bener nih kamu pacar aku? Yuk buktikan! 😜💙
+            </p>
+
+            <div class="pt-4">
+                <button id="startBtn" class="w-full bg-gradient-to-r from-sky-400 to-deepBlue hover:from-sky-500 hover:to-royalBlue text-white font-fredoka text-lg font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer">
+                    <span>aku beneran pacar ego</span>
+                    <i class="fa-solid fa-spa text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 2: QUIZ ================= -->
+        <div id="slideQuiz" class="hidden space-y-6">
+            
+            <div class="space-y-2">
+                <div class="flex justify-between items-center text-xs sm:text-sm font-semibold text-gray-700">
+                    <span id="questionCounter" class="bg-sky-100 text-deepBlue px-3 py-1 rounded-full">Pertanyaan 1/10</span>
+                    <span id="scoreText" class="text-deepBlue"><i class="fa-solid fa-shield-heart mr-1"></i>Poin Kebenaran: <b id="currentScore">0%</b></span>
+                </div>
+                <div class="mini-tube-bg w-full h-4 p-0.5">
+                    <div id="miniTubeBar" class="mini-tube-fill h-full rounded-full" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="bg-white/70 p-5 rounded-2xl border border-sky-100 shadow-sm">
+                <h2 id="questionText" class="font-fredoka text-lg sm:text-xl text-gray-800 font-semibold leading-snug"></h2>
+            </div>
+
+            <div id="optionsContainer" class="grid grid-cols-1 gap-3"></div>
+
+            <div class="text-xs text-gray-500 italic flex items-center justify-center gap-1">
+                <i class="fa-solid fa-seedling text-sky-400"></i>
+                <span>Jawab dengan jujur & teliti ya sayang! 💙</span>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 3: RESULT & 100% TUBE ================= -->
+        <div id="slideResult" class="hidden space-y-6 pop-in">
+            
+            <div class="text-center space-y-2">
+                <span class="text-5xl animate-bounce inline-block">💙💐</span>
+                <h1 class="font-fredoka text-2xl sm:text-3xl font-bold text-gray-800">
+                    Luar Biasa, Bener Semua!
+                </h1>
+                <p class="text-xs sm:text-sm text-deepBlue font-semibold tracking-wide uppercase">
+                    Fix 100% Kamu Pacar Aku Paling Sempurna! ✨
+                </p>
+            </div>
+
+            <div class="flex justify-center items-center gap-6 my-4 bg-white/50 p-4 rounded-2xl border border-sky-100">
+                <div class="tube-container flex-shrink-0">
+                    <div id="finalTubeLiquid" class="tube-liquid" style="height: 100%;"></div>
+                </div>
+                <div class="text-left space-y-1">
+                    <div class="text-xs font-bold text-gray-500 uppercase tracking-wider">Meter Cinta & Hubungan</div>
+                    <div class="text-3xl font-fredoka font-bold text-deepBlue">100% PERFECT!</div>
+                    <p class="text-xs text-gray-600">Tabung bunga lily & cinta terisi penuh! Bukti otentik kamu pacar terbaikku. 💙</p>
+                </div>
+            </div>
+
+            <div class="pt-4">
+                <button id="toMessageBtn" class="w-full bg-gradient-to-r from-sky-400 to-deepBlue hover:from-sky-500 hover:to-royalBlue text-white font-fredoka text-lg font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer">
+                    <span>Baca Pesan Mensive Spesial 💌</span>
+                    <i class="fa-solid fa-heart text-white"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= SLIDE 4: FINAL MENSIVE MESSAGE SLIDE ================= -->
+        <div id="slideMessage" class="hidden space-y-5 pop-in">
+            
+            <div class="text-center space-y-1">
+                <span class="text-4xl inline-block">💌💙</span>
+                <h2 class="font-fredoka text-xl sm:text-2xl font-bold text-gray-800">
+                    HAPPY MENSIVEEE SAYANGG<br>YANG KE-14 BULAN! 💙💐
+                </h2>
+            </div>
+
+            <div class="bg-white/95 p-4 sm:p-5 rounded-2xl border-2 border-sky-200 shadow-sm text-left space-y-3 max-h-72 overflow-y-auto">
+                <p id="anniversaryMessage" class="text-gray-700 text-xs sm:text-sm leading-relaxed font-normal space-y-2">
+                    Ihh udah lama aku gak bikin ginian. Yahh, meskipun kamu bilang pengen sesuatu yang baru dari ini, tapi apa salahnya aku pengen nyampein perasaan aku selama 14 bulan ini?<br><br>
+                    Pertama-tama, terima kasih banyak sayang udah bertahan sama aku selama ini. Segala macam cobaan kita udah lewati dan kita berhasil ada di titik ini. Terima kasih banyak sayang Lia udah ada di hidup aku, mulai dari senang, sedih, sampe drama brantem kita, kita udah lewatin itu semua. Aku pengen kita siap dan selalu sabar menghadapi setiap cobaan yang ada menimpa kita.<br><br>
+                    Kedua, aku pengen minta maaf. Sepertinya setelah kita anniv, cobaan kita datangnya bertubi-tubi ya, datang dari aku yang kurang perhatian dan selalu mengulangi kesalahan yang sama. Aku pengen yang terbaik bagi kamu, aku selalu merasa udah beri tapi sepertinya itu belum cukup. Aku mohon sama kamu di saat ini tolong pahamin aku yang seperti ini. Aku janji setelah urusan kuliah ini selesai, semoga bisa kembali seperti yang kamu mau sayang. Dan juga, tolong banget jangan selalu merendahkan diri kamu sayang, aku gak suka! Aku cinta kamu luar dalam, kelebihan dan kekurangan kamu.<br><br>
+                    Ketiga, aku pengen bilang semoga hubungan ini bisa bertahan selamaaaa mungkin sampai disaat dimana kita bisa melangkah lebih jauh. Aku yakin sama kamu, aku percaya sama kamu, tolong yakin dan percaya sama aku juga yaaa!<br><br>
+                    <b>LOVE YOUU SO SO SO MUCHH SAYANGG TELAH MENJADI LIAA YANG SEMPURNA BANGET BAGI AKUUUU 😍😍🥰🥰🥰😘😘😘🤭🤭🤭☺️☺️☺️😚🤗🤗🩷🩷🩷🩷🫶🫶🫶🫶🫰🫰🫰🫰</b>
+                </p>
+                
+                <!-- Foto Kalian -->
+                <div class="flex justify-center my-4 pt-2">
+                    <div class="w-full max-w-xs p-1 border-2 border-sky-100 rounded-xl overflow-hidden shadow-lg bg-white/80">
+                        <img src="https://cdn.imagetourls.com/uploads/tyImg/o3a73Tgz.jpg" alt="Foto Kami Berdua" class="w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                <button id="confettiBtn" class="flex-1 bg-sky-100 hover:bg-sky-200 text-deepBlue font-fredoka font-medium py-3 px-4 rounded-xl transition text-sm flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Sebar Bunga & Cinta!</span>
+                </button>
+                <button id="resetBtn" class="flex-1 bg-gradient-to-r from-sky-400 to-deepBlue text-white font-fredoka font-medium py-3 px-4 rounded-xl transition text-sm shadow hover:opacity-95 flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Ulangi Kuis</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================= WRONG ANSWER MODAL POPUP ================= -->
+    <div id="wrongModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div id="modalCard" class="bg-white rounded-3xl p-6 max-w-xs w-full text-center space-y-4 shadow-2xl border-2 border-sky-300">
+            <div class="text-5xl" id="modalEmoji">😜</div>
+            <h3 class="font-fredoka text-xl font-bold text-gray-800" id="modalTitle">Eits, Salah!</h3>
+            <p class="text-gray-600 text-sm leading-relaxed" id="modalMessage">
+                Masa gitu sih? Yakin nih itu jawabannya? Coba mikir lagi deh! 🙈
+            </p>
+            <button id="closeModalBtn" class="w-full bg-deepBlue hover:bg-sky-600 text-white font-fredoka font-semibold py-3 px-6 rounded-xl shadow-md transition transform active:scale-95 cursor-pointer">
+                Coba Jawab Lagi 💡
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic (Placed at the bottom to guarantee element loading) -->
+    <script>
+        const quizData = [
+            {
+                q: "1. Kita jadian tanggal berapa hayoo?",
+                options: ["19 Agustus", "12 Oktober", "15 September", "Lupa euy 🙈"],
+                correct: 0
+            },
+            {
+                q: "2. Kita pertama kali 'jalan bareng' di mana?",
+                options: ["Bioskop", "Cafe", "Taman Kota", "Rumah Makan"],
+                correct: 1
+            },
+            {
+                q: "3. Kita date pertama kali di mana hayooo?",
+                options: ["Mall Kelapa Gading", "Block M", "Grand Indonesia", "PIM"],
+                correct: 1
+            },
+            {
+                q: "4. Baju pertama kali kita date itu warna apa hayoo?",
+                options: ["Hitam & Hitam", "Putih & Putih", "Merah & Biru", "Biru & Putih"],
+                correct: 1
+            },
+            {
+                q: "5. Kita ciuman pertama kali di manahehehehe maaf sedikit nakal?",
+                options: ["Di dalam mobil", "Gaming house", "Di kafe rooftop", "Taman"],
+                correct: 1
+            },
+            {
+                q: "6. Kamu kok bisa cantik banget sih, kamu pacar aku bener kan atau bidadari dari surga nih?",
+                options: ["Bidadari dari surga pastinya ✨", "Pacar kamu yang paling manis 💙", "Dua-duanya bener banget!", "Semua jawaban benar 😜"],
+                correct: 3
+            },
+            {
+                q: "7. Tempat nongkrong after magang kita di mana?",
+                options: ["Indomaret Point", "Family Mart", "Starbucks", "Warkop lokal"],
+                correct: 1
+            },
+            {
+                q: "8. Tanggal dan bulan berapa aku pertama kali ke rumah kamu hayoo?",
+                options: ["23 bulan 12", "25 bulan 12", "15 bulan 11", "10 bulan 10"],
+                correct: 0
+            },
+            {
+                q: "9. Kapan love letter pertama kamu kasih ke aku?",
+                options: ["10 bulan 8", "15 bulan 9", "20 bulan 10", "1 bulan 1"],
+                correct: 1
+            },
+            {
+                q: "10. Kamu sayang aku gak?",
+                options: ["Sayang banget selamanya! 💙", "Sayang pol-polan", "Tak terhingga sampai maut memisahkan", "Semua jawaban benar! 🥰"],
+                correct: 3
+            }
+        ];
+
+        const wrongNotifs = [
+            { emoji: "🙈", title: "Yakin nih?", msg: "Masa gitu sih... Coba ingat-ingat lagi kenangan kita sayang!" },
+            { emoji: "😜", title: "Eits Salah!", msg: "Mana mungkin pacar aku lupa hal ini! Coba pilih jawaban yang bener." },
+            { emoji: "🧐", title: "Hmmm Suspicious...", msg: "Jangan-jangan kamu lupa ya? Jawaban kamu salah, tebak lagi!" },
+            { emoji: "💙", title: "Hampir Sayang...", msg: "Parah banget salah jawabannya! Buruan benerin biar bisa baca pesan mensive-nya 🥺" },
+            { emoji: "🤔", title: "Teteeet! Salah!", msg: "Fokus dong sayang! Ingat-ingat lagi momen manis kita berdua!" }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function startQuiz() {
+            const slideIntro = document.getElementById('slideIntro');
+            const slideQuiz = document.getElementById('slideQuiz');
+            if (slideIntro) slideIntro.classList.add('hidden');
+            if (slideQuiz) {
+                slideQuiz.classList.remove('hidden');
+                slideQuiz.classList.add('pop-in');
+            }
+            currentQuestion = 0;
+            score = 0;
+            updateProgress();
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const data = quizData[currentQuestion];
+            const questionText = document.getElementById('questionText');
+            const questionCounter = document.getElementById('questionCounter');
+            const optionsContainer = document.getElementById('optionsContainer');
+
+            if (questionText) questionText.innerText = data.q;
+            if (questionCounter) questionCounter.innerText = `Pertanyaan ${currentQuestion + 1}/${quizData.length}`;
+            
+            if (optionsContainer) {
+                optionsContainer.innerHTML = '';
+                
+                data.options.forEach((opt, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = `w-full bg-white hover:bg-sky-50 border-2 border-sky-100 hover:border-sky-300 text-gray-700 font-medium py-3.5 px-5 rounded-2xl transition-all duration-200 text-left text-sm sm:text-base flex items-center justify-between group shadow-sm active:scale-98 cursor-pointer`;
+                    btn.innerHTML = `
+                        <span>${opt}</span>
+                        <i class="fa-regular fa-circle-check text-sky-300 group-hover:text-deepBlue text-lg transition-colors"></i>
+                    `;
+                    btn.onclick = () => checkAnswer(index);
+                    optionsContainer.appendChild(btn);
+                });
+            }
+        }
+
+        function checkAnswer(selectedIndex) {
+            const isCorrect = (currentQuestion === 5 || currentQuestion === 9) ? true : (selectedIndex === quizData[currentQuestion].correct);
+
+            if (isCorrect) {
+                score++;
+                updateProgress();
+
+                currentQuestion++;
+                if (currentQuestion < quizData.length) {
+                    loadQuestion();
+                } else {
+                    showFinalResult();
+                }
+            } else {
+                showWrongModal();
+            }
+        }
+
+        function updateProgress() {
+            const percentage = Math.round((score / quizData.length) * 100);
+            const currentScore = document.getElementById('currentScore');
+            const miniTubeBar = document.getElementById('miniTubeBar');
+            if (currentScore) currentScore.innerText = `${percentage}%`;
+            if (miniTubeBar) miniTubeBar.style.width = `${percentage}%`;
+        }
+
+        function showWrongModal() {
+            const randomNotif = wrongNotifs[Math.floor(Math.random() * wrongNotifs.length)];
+            const wrongModal = document.getElementById('wrongModal');
+            const modalCard = document.getElementById('modalCard');
+            const modalEmoji = document.getElementById('modalEmoji');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+
+            if (modalEmoji) modalEmoji.innerText = randomNotif.emoji;
+            if (modalTitle) modalTitle.innerText = randomNotif.title;
+            if (modalMessage) modalMessage.innerText = randomNotif.msg;
+
+            if (wrongModal) wrongModal.classList.remove('hidden');
+            if (modalCard) modalCard.classList.add('shake-animation');
+
+            setTimeout(() => {
+                if (modalCard) modalCard.classList.remove('shake-animation');
+            }, 500);
+        }
+
+        function closeModal() {
+            const wrongModal = document.getElementById('wrongModal');
+            if (wrongModal) wrongModal.classList.add('hidden');
+        }
+
+        function showFinalResult() {
+            const slideQuiz = document.getElementById('slideQuiz');
+            const slideResult = document.getElementById('slideResult');
+            if (slideQuiz) slideQuiz.classList.add('hidden');
+            if (slideResult) slideResult.classList.remove('hidden');
+            triggerConfetti();
+        }
+
+        function showFinalMessage() {
+            const slideResult = document.getElementById('slideResult');
+            const slideMessage = document.getElementById('slideMessage');
+            if (slideResult) slideResult.classList.add('hidden');
+            if (slideMessage) {
+                slideMessage.classList.remove('hidden');
+                slideMessage.classList.add('pop-in');
+            }
+            triggerConfetti();
+        }
+
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 90,
+                    spread: 80,
+                    origin: { y: 0.6 },
+                    colors: ['#0284C7', '#38BDF8', '#BAE6FD', '#60A5FA']
+                });
+            }
+        }
+
+        function resetQuiz() {
+            const slideMessage = document.getElementById('slideMessage');
+            const slideResult = document.getElementById('slideResult');
+            const slideIntro = document.getElementById('slideIntro');
+            if (slideMessage) slideMessage.classList.add('hidden');
+            if (slideResult) slideResult.classList.add('hidden');
+            if (slideIntro) {
+                slideIntro.classList.remove('hidden');
+                slideIntro.classList.add('pop-in');
+            }
+        }
+
+        // Direct Event Listeners binding as an absolute fallback
+        document.getElementById('startBtn').addEventListener('click', startQuiz);
+        document.getElementById('toMessageBtn').addEventListener('click', showFinalMessage);
+        document.getElementById('confettiBtn').addEventListener('click', triggerConfetti);
+        document.getElementById('resetBtn').addEventListener('click', resetQuiz);
+        document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    </script>
+</body>
+</html>
